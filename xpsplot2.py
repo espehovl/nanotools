@@ -30,7 +30,7 @@ YLABEL = "CPS"
 GRID = False
 LINEWIDTH = 2
 FONTSIZE = 20
-ALPHA = .5
+ALPHA = .8
 COLORS = ["black", "red", "green", "blue", "violet", "orange",
           "cyan", "magenta", "indigo", "maroon", "turquoise"]
 
@@ -136,7 +136,7 @@ class XPSData(object):
 
     def get_plot(self, columns=None, fill=False, ax=None, xaxes=True,
                  legend=True, colors=COLORS, ylabel=None, frame=False,
-                 legend_kws={}):
+                 legend_kws={}, area = None):
         """
         Return a matplotlib plot of XPS data for the specified columns.
 
@@ -196,7 +196,11 @@ class XPSData(object):
                     ax.plot(self.data.index, self.data[col], linewidth=LINEWIDTH,
                             c=color, label=col)
                 ic += 1
-
+        if area:
+            #print("boop")
+            ax.annotate("Area = "+area,xy=(100,100),xytext=(30,SIZE[1]*10-50), xycoords="figure pixels", textcoords="figure pixels", fontsize=20)
+            
+			
         # plot options :
         #   * remove frame and manage spines
         # ax.set_frame_on(False)
@@ -221,9 +225,10 @@ class XPSData(object):
         #   * add grid
         ax.grid(GRID)
         #   * add legend
+
         if legend:
             ax.legend(fontsize=FONTSIZE, **legend_kws)
-
+		
         return ax
 
     def save_plot(self, filename="plot.pdf", columns=None, fill=False,
@@ -267,7 +272,7 @@ class XPSData(object):
         data = num_data[:, [0] + list(range(2, ndata))]
         columns = ["KE", "Exp"]
         columns += ["Comp_{}".format(i - 2) for i in list(range(3, ndata - 2))]
-        columns += ["BG", "envelope"]
+        columns += ["BGdefault", "envelope"]
 
         data_frame = pd.DataFrame(data=data, index=index, columns=columns)
 
