@@ -5,6 +5,7 @@
 This module implements two classes in order to quickly plot XPS data.
 """
 
+#Original author info below vvv "
 __author__ = "Germain Salvato-Vallverdu"
 __version__ = '0.1'
 __email__ = 'germain.vallverdu@univ-pau.fr'
