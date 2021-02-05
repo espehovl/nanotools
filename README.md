@@ -14,4 +14,4 @@ The function, getImages saves images of multiple scans from multiple folders on 
 
 ### xpsplot2
 This is mostly adapted from https://github.com/gVallverdu/xpsplot
-Some typos have been fixed, as well as some minor adjustments due to preferations.
+Some typos have been fixed, as well as some minor adjustments due to personal preferences.
